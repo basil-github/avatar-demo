@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Talking Avatar with RAG Pipeline</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #f8f9fa;
+    color: #1a1a2e;
+    line-height: 1.7;
+  }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 0 1.5rem; }
+
+  header {
+    padding: 3rem 0 2rem;
+    text-align: center;
+  }
+  header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  header p {
+    color: #555;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  section { margin-bottom: 3rem; }
+  section h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e0e0e0;
+  }
+
+  .diagram img {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .step {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    padding: 1.25rem;
+  }
+  .step-num {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #888;
+    margin-bottom: 0.4rem;
+  }
+  .step h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.4rem; }
+  .step p { font-size: 0.88rem; color: #555; line-height: 1.55; }
+  .tags { margin-top: 0.75rem; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  .tag {
+    font-size: 0.7rem;
+    font-weight: 500;
+    background: #f0f0f0;
+    color: #444;
+    padding: 0.2rem 0.55rem;
+    border-radius: 5px;
+  }
+
+  .videos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .video-card {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .video-card video { width: 100%; display: block; background: #000; }
+  .video-card .caption { padding: 0.75rem 1rem; font-size: 0.88rem; font-weight: 500; }
+
+  .about p { color: #444; font-size: 0.92rem; }
+
+  footer {
+    text-align: center;
+    padding: 2rem 0;
+    color: #999;
+    font-size: 0.8rem;
+    border-top: 1px solid #e5e5e5;
+  }
+
+  @media (max-width: 600px) {
+    .steps, .videos { grid-template-columns: 1fr; }
+    header h1 { font-size: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>Talking Avatar with RAG Pipeline</h1>
+    <p>An AI system that retrieves knowledge from documents and delivers answers through a lip-synced talking avatar with cloned voice.</p>
+  </header>
+
+  <section class="diagram">
+    <h2>Architecture</h2>
+    <img src="diagram.jpg" alt="Pipeline Architecture Diagram">
+  </section>
+
+  <section>
+    <h2>How It Works</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">Step 1</div>
+        <h3>Input &amp; Preparation</h3>
+        <p>User speaks or types a query. Source documents are chunked and embedded into a vector store.</p>
+        <div class="tags"><span class="tag">e5-base</span><span class="tag">Speech-to-Text</span></div>
+      </div>
+      <div class="step">
+        <div class="step-num">Step 2</div>
+        <h3>Retrieval</h3>
+        <p>The query is matched against document embeddings via FAISS to find the most relevant passages.</p>
+        <div class="tags"><span class="tag">FAISS</span><span class="tag">Vector Search</span></div>
+      </div>
+      <div class="step">
+        <div class="step-num">Step 3</div>
+        <h3>Synthesis &amp; Generation</h3>
+        <p>Falcon LLM generates an answer from retrieved context. CoquiTTS converts it to cloned speech.</p>
+        <div class="tags"><span class="tag">Falcon LLM</span><span class="tag">CoquiTTS</span></div>
+      </div>
+      <div class="step">
+        <div class="step-num">Step 4</div>
+        <h3>Presentation</h3>
+        <p>Audio drives a lip-sync model to animate the avatar, producing a realistic talking video.</p>
+        <div class="tags"><span class="tag">LatentSync</span><span class="tag">MuseTalk</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Demo</h2>
+    <div class="videos">
+      <div class="video-card">
+        <video controls preload="metadata"><source src="demo.mp4" type="video/mp4"></video>
+        <div class="caption">Full Pipeline Demo</div>
+      </div>
+      <div class="video-card">
+        <video controls preload="metadata"><source src="reference.mp4" type="video/mp4"></video>
+        <div class="caption">Reference Avatar</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about">
+    <h2>About</h2>
+    <p>This system combines RAG with text-to-speech voice cloning and video lip-sync to create an interactive knowledge interface. The source material is a book on Emirati folk medicine (الطبيب الشعبي), documenting traditional healing practices. The avatar serves as a digital narrator, preserving this cultural knowledge in an engaging format.</p>
+  </section>
+
+  <footer>Talking Avatar with RAG Pipeline</footer>
+
+</div>
+</body>
+</html>
