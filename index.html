@@ -29,15 +29,15 @@
     line-height: 1.7;
   }
 
-  .container { max-width: 920px; margin: 0 auto; padding: 0 1.5rem; }
+  .container { max-width: 920px; margin: 0 auto; padding: 0 1rem; }
 
   /* ── HEADER ── */
   header {
-    padding: 3rem 0 2rem;
+    padding: 2rem 0 1.5rem;
     text-align: center;
   }
-  header h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.4rem; }
-  header p { color: var(--muted); max-width: 600px; margin: 0 auto 2rem; font-size: 0.95rem; }
+  header h1 { font-size: clamp(1.3rem, 5vw, 2rem); font-weight: 700; margin-bottom: 0.4rem; }
+  header p { color: var(--muted); max-width: 600px; margin: 0 auto 1.5rem; font-size: 0.9rem; }
 
   .hero-video {
     border-radius: 12px;
@@ -48,11 +48,11 @@
   .hero-video video { width: 100%; display: block; }
 
   /* ── SECTIONS ── */
-  section { margin-bottom: 3rem; }
+  section { margin-bottom: 2.5rem; }
   section > h2 {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 700;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1rem;
     padding-bottom: 0.5rem;
     border-bottom: 2px solid var(--border);
   }
@@ -61,10 +61,10 @@
   .diagram img { width: 100%; border-radius: 10px; border: 1px solid var(--border); }
 
   /* ── ABOUT ── */
-  .about p { color: #444; font-size: 0.92rem; }
+  .about p { color: #444; font-size: 0.9rem; }
 
   /* ══════════════════════════════════════════
-     PRESENTATION VIEWER
+     PRESENTATION WRAPPER
   ══════════════════════════════════════════ */
   .presentation-wrapper {
     background: var(--navy);
@@ -76,27 +76,33 @@
   /* top bar */
   .pres-topbar {
     background: var(--navy-mid);
-    padding: 0.65rem 1.2rem;
+    padding: 0.6rem 1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid rgba(255,255,255,0.08);
+    gap: 0.5rem;
   }
-  .pres-dots { display: flex; gap: 6px; }
+  .pres-dots { display: flex; gap: 5px; flex-shrink: 0; }
   .pres-dots span {
-    width: 11px; height: 11px; border-radius: 50%;
+    width: 10px; height: 10px; border-radius: 50%;
     background: rgba(255,255,255,0.15);
   }
   .pres-title {
-    color: rgba(255,255,255,0.55);
-    font-size: 0.78rem;
+    color: rgba(255,255,255,0.45);
+    font-size: clamp(0.6rem, 2vw, 0.75rem);
     font-family: 'DM Mono', monospace;
     letter-spacing: 0.04em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
   }
   .pres-counter {
     color: rgba(255,255,255,0.4);
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     font-family: 'DM Mono', monospace;
+    flex-shrink: 0;
   }
 
   /* slide viewport */
@@ -131,28 +137,30 @@
   .slide-header {
     background: var(--navy);
     color: #fff;
-    padding: 0.6em 1.2em;
-    font-size: clamp(0.9rem, 2.5vw, 1.35rem);
+    padding: 0.5em 1em;
+    font-size: clamp(0.65rem, 2.2vw, 1.1rem);
     font-weight: 700;
+    flex-shrink: 0;
   }
   .slide-body {
     flex: 1;
     background: #f0f2f5;
-    padding: 1.2em 1.4em;
+    padding: clamp(0.5rem, 2vw, 1.2em) clamp(0.6rem, 2.5vw, 1.4em);
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    gap: 0.8em;
+    gap: clamp(0.4em, 1.2vw, 0.8em);
   }
 
   /* ── SLIDE 1: TITLE ── */
   .slide-1 {
     background: var(--navy);
     justify-content: center;
-    padding: 8% 9%;
+    padding: 6% 8%;
+    position: relative;
   }
   .s1-tag {
-    font-size: clamp(0.55rem, 1.2vw, 0.75rem);
+    font-size: clamp(0.45rem, 1.2vw, 0.72rem);
     color: rgba(255,255,255,0.45);
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -160,48 +168,48 @@
     font-family: 'DM Mono', monospace;
   }
   .s1-title-big {
-    font-size: clamp(1.6rem, 5.5vw, 3.6rem);
+    font-size: clamp(1.4rem, 5.5vw, 3.6rem);
     font-weight: 700;
     color: #fff;
     line-height: 1.1;
-    margin-bottom: 0.15em;
+    margin-bottom: 0.1em;
   }
   .s1-title-sub {
-    font-size: clamp(1rem, 3.5vw, 2.2rem);
+    font-size: clamp(0.8rem, 3.2vw, 2.2rem);
     font-weight: 400;
     color: var(--teal);
     line-height: 1.2;
   }
   .s1-divider {
-    width: clamp(40px, 8%, 90px);
+    width: clamp(32px, 8%, 90px);
     height: 3px;
     background: var(--gold);
-    margin: 1em 0;
+    margin: 0.8em 0;
     border-radius: 2px;
   }
   .s1-subtitle {
-    font-size: clamp(0.55rem, 1.4vw, 0.85rem);
+    font-size: clamp(0.45rem, 1.3vw, 0.82rem);
     color: rgba(255,255,255,0.5);
-    margin-bottom: 1.4em;
+    margin-bottom: 1.2em;
   }
   .s1-chips {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.4em;
+    gap: 0.35em;
   }
   .s1-chip {
-    font-size: clamp(0.45rem, 1.1vw, 0.7rem);
+    font-size: clamp(0.38rem, 1vw, 0.65rem);
     color: var(--teal);
     border: 1px solid var(--teal);
     border-radius: 4px;
-    padding: 0.25em 0.7em;
+    padding: 0.2em 0.55em;
     font-family: 'DM Mono', monospace;
   }
   .s1-year {
     position: absolute;
     bottom: 5%;
-    left: 9%;
-    font-size: clamp(0.45rem, 1vw, 0.65rem);
+    left: 8%;
+    font-size: clamp(0.38rem, 0.9vw, 0.6rem);
     color: rgba(255,255,255,0.3);
   }
 
@@ -209,51 +217,52 @@
   .s2-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 0.6em;
+    gap: clamp(0.3em, 1vw, 0.6em);
     flex: 1;
   }
   .s2-card {
     background: #fff;
-    border-radius: 8px;
-    padding: 0.7em 0.6em;
+    border-radius: 7px;
+    padding: clamp(0.4em, 1.2vw, 0.7em) clamp(0.35em, 1vw, 0.6em);
     display: flex;
     flex-direction: column;
     border-top: 3px solid transparent;
     box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+    min-width: 0;
   }
   .s2-card:nth-child(1) { border-color: var(--teal); }
   .s2-card:nth-child(2) { border-color: var(--gold); }
   .s2-card:nth-child(3) { border-color: var(--purple-accent); }
   .s2-card:nth-child(4) { border-color: var(--red-accent); }
   .s2-num {
-    font-size: clamp(1rem, 2.8vw, 1.8rem);
+    font-size: clamp(0.9rem, 2.8vw, 1.8rem);
     font-weight: 700;
-    margin-bottom: 0.15em;
+    margin-bottom: 0.1em;
   }
   .s2-card:nth-child(1) .s2-num { color: var(--teal); }
   .s2-card:nth-child(2) .s2-num { color: var(--gold); }
   .s2-card:nth-child(3) .s2-num { color: var(--purple-accent); }
   .s2-card:nth-child(4) .s2-num { color: var(--red-accent); }
   .s2-label {
-    font-size: clamp(0.5rem, 1.2vw, 0.72rem);
+    font-size: clamp(0.42rem, 1.1vw, 0.7rem);
     font-weight: 700;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.4em;
     color: var(--text);
     line-height: 1.3;
   }
-  .s2-sep { height: 1px; background: #e8e8e8; margin-bottom: 0.5em; }
+  .s2-sep { height: 1px; background: #e8e8e8; margin-bottom: 0.4em; }
   .s2-item {
-    font-size: clamp(0.42rem, 1vw, 0.62rem);
+    font-size: clamp(0.35rem, 0.95vw, 0.6rem);
     color: #555;
-    padding: 0.18em 0;
+    padding: 0.14em 0;
     display: flex;
     align-items: flex-start;
-    gap: 0.35em;
+    gap: 0.3em;
     line-height: 1.4;
   }
   .s2-dot {
-    width: 6px; height: 6px; border-radius: 50%;
-    margin-top: 0.25em; flex-shrink: 0;
+    width: 5px; height: 5px; border-radius: 50%;
+    margin-top: 0.3em; flex-shrink: 0;
   }
   .s2-card:nth-child(1) .s2-dot { background: var(--teal); }
   .s2-card:nth-child(2) .s2-dot { background: var(--gold); }
@@ -264,67 +273,72 @@
   .s3-two-col {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0.7em;
+    gap: clamp(0.4em, 1.2vw, 0.7em);
   }
   .s3-card {
     background: #fff;
     border-radius: 7px;
-    padding: 0.7em 0.8em;
+    padding: clamp(0.45em, 1.3vw, 0.7em) clamp(0.5em, 1.5vw, 0.8em);
     box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+    min-width: 0;
   }
   .s3-card-title {
-    font-size: clamp(0.5rem, 1.2vw, 0.72rem);
+    font-size: clamp(0.42rem, 1.1vw, 0.7rem);
     font-weight: 700;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.4em;
     padding-bottom: 0.3em;
     border-bottom: 2px solid;
   }
   .s3-card:nth-child(1) .s3-card-title { border-color: var(--red-accent); }
   .s3-card:nth-child(2) .s3-card-title { border-color: var(--teal); }
   .s3-item {
-    font-size: clamp(0.42rem, 1vw, 0.6rem);
+    font-size: clamp(0.35rem, 0.95vw, 0.58rem);
     color: #555;
-    padding: 0.2em 0;
+    padding: 0.18em 0;
     display: flex;
     align-items: flex-start;
-    gap: 0.35em;
+    gap: 0.3em;
     line-height: 1.4;
   }
-  .s3-dot-red { width: 7px; height: 7px; border-radius: 50%; background: var(--red-accent); margin-top: 0.2em; flex-shrink: 0; }
-  .s3-dot-teal { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); margin-top: 0.2em; flex-shrink: 0; }
+  .s3-dot-red { width: 6px; height: 6px; border-radius: 50%; background: var(--red-accent); margin-top: 0.2em; flex-shrink: 0; }
+  .s3-dot-teal { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); margin-top: 0.2em; flex-shrink: 0; }
   .s3-flow-label {
-    font-size: clamp(0.5rem, 1.2vw, 0.72rem);
+    font-size: clamp(0.42rem, 1.1vw, 0.7rem);
     font-weight: 700;
     color: var(--text);
-    margin-top: 0.2em;
+    flex-shrink: 0;
   }
   .s3-flow {
     display: flex;
     align-items: stretch;
+    flex: 1;
     gap: 0;
-    margin-top: 0.4em;
+    overflow: hidden;
   }
   .s3-step {
     flex: 1;
     background: #fff;
-    border-radius: 6px;
-    padding: 0.5em 0.4em;
+    border-radius: 5px;
+    padding: clamp(0.3em, 0.9vw, 0.5em) clamp(0.2em, 0.7vw, 0.4em);
     text-align: center;
-    position: relative;
     box-shadow: 0 1px 5px rgba(0,0,0,0.06);
+    min-width: 0;
+    overflow: hidden;
   }
   .s3-step-title {
-    font-size: clamp(0.38rem, 0.9vw, 0.58rem);
+    font-size: clamp(0.3rem, 0.85vw, 0.55rem);
     font-weight: 700;
     color: var(--text);
     line-height: 1.3;
   }
   .s3-step-sub {
-    font-size: clamp(0.32rem, 0.75vw, 0.48rem);
+    font-size: clamp(0.25rem, 0.7vw, 0.44rem);
     color: #888;
     margin-top: 0.2em;
     font-family: 'DM Mono', monospace;
     line-height: 1.3;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .s3-step-bar {
     height: 3px;
@@ -335,63 +349,66 @@
     display: flex;
     align-items: center;
     color: #bbb;
-    font-size: clamp(0.5rem, 1.2vw, 0.9rem);
+    font-size: clamp(0.45rem, 1.1vw, 0.85rem);
     padding: 0 0.1em;
     align-self: center;
+    flex-shrink: 0;
   }
 
   /* ── SLIDE 4: MODEL SELECTION ── */
   .s4-two-col {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0.6em;
-    margin-bottom: 0.6em;
+    gap: clamp(0.35em, 1vw, 0.6em);
+    flex-shrink: 0;
   }
   .s4-table-label {
-    font-size: clamp(0.48rem, 1.1vw, 0.68rem);
+    font-size: clamp(0.4rem, 1.1vw, 0.66rem);
     font-weight: 700;
-    margin-bottom: 0.4em;
+    margin-bottom: 0.35em;
     color: var(--text);
   }
   .s4-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: clamp(0.38rem, 0.9vw, 0.57rem);
-    border-radius: 6px;
+    font-size: clamp(0.3rem, 0.85vw, 0.54rem);
+    border-radius: 5px;
     overflow: hidden;
   }
   .s4-table th {
     background: var(--navy);
     color: #fff;
-    padding: 0.4em 0.5em;
+    padding: 0.35em 0.4em;
     text-align: center;
     font-weight: 600;
   }
   .s4-table td {
-    padding: 0.35em 0.5em;
+    padding: 0.3em 0.4em;
     text-align: center;
     border-bottom: 1px solid #eee;
     background: #fff;
     color: #333;
   }
-  .s4-table tr.current td { background: var(--teal); color: #fff; font-weight: 600; }
+  .s4-table tr.current td,
   .s4-table tr.recommended td { background: var(--teal); color: #fff; font-weight: 600; }
   .s4-prompt {
     background: var(--navy);
     border-radius: 7px;
-    padding: 0.6em 0.9em;
+    padding: clamp(0.4em, 1.2vw, 0.6em) clamp(0.5em, 1.5vw, 0.9em);
     direction: rtl;
     font-family: 'DM Mono', monospace;
+    flex: 1;
+    overflow: hidden;
   }
   .s4-prompt-label {
-    font-size: clamp(0.42rem, 1vw, 0.6rem);
+    font-size: clamp(0.35rem, 0.95vw, 0.58rem);
     color: var(--teal);
     font-weight: 600;
-    margin-bottom: 0.4em;
+    margin-bottom: 0.35em;
     direction: ltr;
   }
   .s4-prompt-text {
-    font-size: clamp(0.38rem, 0.85vw, 0.54rem);
+    font-size: clamp(0.3rem, 0.8vw, 0.52rem);
     color: rgba(255,255,255,0.8);
     line-height: 1.7;
   }
@@ -401,25 +418,26 @@
   .s5-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 0.55em;
-    margin-bottom: 0.5em;
+    gap: clamp(0.3em, 0.9vw, 0.55em);
+    flex-shrink: 0;
   }
   .s5-card {
     background: #fff;
     border-radius: 7px;
-    padding: 0.55em 0.65em;
+    padding: clamp(0.35em, 1vw, 0.55em) clamp(0.4em, 1.2vw, 0.65em);
     box-shadow: 0 1px 5px rgba(0,0,0,0.06);
+    min-width: 0;
   }
   .s5-card-title {
-    font-size: clamp(0.45rem, 1.1vw, 0.68rem);
+    font-size: clamp(0.38rem, 1.05vw, 0.66rem);
     font-weight: 700;
-    margin-bottom: 0.4em;
+    margin-bottom: 0.35em;
     color: var(--text);
   }
   .s5-item {
-    font-size: clamp(0.38rem, 0.9vw, 0.58rem);
+    font-size: clamp(0.3rem, 0.85vw, 0.56rem);
     color: #555;
-    padding: 0.18em 0;
+    padding: 0.15em 0;
     line-height: 1.4;
     border-bottom: 1px solid #f0f0f0;
   }
@@ -428,23 +446,23 @@
   .s5-fields {
     background: var(--navy);
     border-radius: 7px;
-    padding: 0.5em 0.8em;
+    padding: clamp(0.35em, 1vw, 0.5em) clamp(0.5em, 1.5vw, 0.8em);
     display: flex;
-    gap: 0.5em;
+    gap: 0.4em;
     flex-wrap: wrap;
     align-items: center;
+    flex-shrink: 0;
   }
   .s5-fields-label {
-    font-size: clamp(0.4rem, 0.9vw, 0.58rem);
+    font-size: clamp(0.32rem, 0.85vw, 0.56rem);
     color: rgba(255,255,255,0.5);
-    margin-right: 0.3em;
   }
   .s5-field {
-    font-size: clamp(0.36rem, 0.82vw, 0.52rem);
+    font-size: clamp(0.28rem, 0.78vw, 0.5rem);
     background: rgba(255,255,255,0.08);
     color: var(--teal);
     border-radius: 4px;
-    padding: 0.2em 0.5em;
+    padding: 0.18em 0.45em;
     font-family: 'DM Mono', monospace;
   }
 
@@ -452,49 +470,51 @@
   .s6-metrics {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 0.5em;
-    margin-bottom: 0.5em;
+    gap: clamp(0.3em, 0.9vw, 0.5em);
+    flex-shrink: 0;
   }
   .s6-metric {
     background: #fff;
     border-radius: 7px;
-    padding: 0.55em 0.6em;
+    padding: clamp(0.35em, 1vw, 0.55em) clamp(0.3em, 0.9vw, 0.6em);
     text-align: center;
     box-shadow: 0 1px 5px rgba(0,0,0,0.06);
+    min-width: 0;
   }
   .s6-metric-name {
-    font-size: clamp(0.52rem, 1.3vw, 0.8rem);
+    font-size: clamp(0.45rem, 1.3vw, 0.78rem);
     font-weight: 700;
     color: var(--teal);
-    margin-bottom: 0.25em;
+    margin-bottom: 0.2em;
   }
   .s6-metric-desc {
-    font-size: clamp(0.36rem, 0.85vw, 0.54rem);
+    font-size: clamp(0.28rem, 0.8vw, 0.52rem);
     color: #666;
     line-height: 1.4;
   }
   .s6-table-label {
-    font-size: clamp(0.45rem, 1.05vw, 0.65rem);
+    font-size: clamp(0.38rem, 1vw, 0.62rem);
     font-weight: 700;
-    margin-bottom: 0.35em;
+    margin-bottom: 0.3em;
     color: var(--text);
+    flex-shrink: 0;
   }
   .s6-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: clamp(0.38rem, 0.88vw, 0.56rem);
-    border-radius: 6px;
+    font-size: clamp(0.3rem, 0.85vw, 0.54rem);
+    border-radius: 5px;
     overflow: hidden;
   }
   .s6-table th {
     background: var(--navy);
     color: #fff;
-    padding: 0.4em 0.6em;
+    padding: 0.35em 0.5em;
     text-align: left;
     font-weight: 600;
   }
   .s6-table td {
-    padding: 0.35em 0.6em;
+    padding: 0.3em 0.5em;
     border-bottom: 1px solid #eee;
     background: #fff;
     color: #333;
@@ -502,53 +522,56 @@
   .s6-table tr:nth-child(even) td { background: #f8f8f8; }
   .s6-table tr:last-child td { background: rgba(0,180,160,0.12); font-weight: 600; color: var(--teal-dim); }
   .s6-footnote {
-    font-size: clamp(0.32rem, 0.75vw, 0.48rem);
+    font-size: clamp(0.26rem, 0.72vw, 0.46rem);
     color: #999;
-    margin-top: 0.3em;
     font-style: italic;
+    flex-shrink: 0;
   }
 
   /* ── SLIDE 7: SUMMARY ── */
   .s7-checks {
     display: flex;
     flex-direction: column;
-    gap: 0.45em;
-    margin-bottom: 0.6em;
+    gap: clamp(0.25em, 0.8vw, 0.45em);
+    flex: 1;
+    overflow: hidden;
   }
   .s7-check {
     display: flex;
     align-items: flex-start;
-    gap: 0.5em;
+    gap: 0.45em;
     background: #fff;
     border-radius: 6px;
-    padding: 0.5em 0.7em;
+    padding: clamp(0.3em, 0.9vw, 0.5em) clamp(0.4em, 1.2vw, 0.7em);
     box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    min-width: 0;
   }
   .s7-tick {
-    font-size: clamp(0.55rem, 1.2vw, 0.75rem);
+    font-size: clamp(0.48rem, 1.2vw, 0.72rem);
     color: var(--teal);
     font-weight: 700;
     flex-shrink: 0;
-    margin-top: 0.05em;
   }
   .s7-check-text {
-    font-size: clamp(0.42rem, 1vw, 0.62rem);
+    font-size: clamp(0.35rem, 0.95vw, 0.6rem);
     color: #444;
     line-height: 1.45;
+    min-width: 0;
   }
   .s7-next {
     background: var(--navy);
     border-radius: 7px;
-    padding: 0.55em 0.9em;
+    padding: clamp(0.4em, 1.2vw, 0.55em) clamp(0.55em, 1.5vw, 0.9em);
+    flex-shrink: 0;
   }
   .s7-next-label {
-    font-size: clamp(0.42rem, 0.95vw, 0.6rem);
+    font-size: clamp(0.36rem, 0.95vw, 0.58rem);
     color: var(--gold);
     font-weight: 700;
-    margin-bottom: 0.3em;
+    margin-bottom: 0.25em;
   }
   .s7-next-text {
-    font-size: clamp(0.38rem, 0.88vw, 0.56rem);
+    font-size: clamp(0.3rem, 0.85vw, 0.54rem);
     color: rgba(255,255,255,0.7);
     line-height: 1.6;
   }
@@ -557,44 +580,48 @@
   .s8-three-col {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 0.5em;
-    margin-bottom: 0.5em;
+    gap: clamp(0.3em, 0.9vw, 0.5em);
+    flex-shrink: 0;
   }
   .s8-col-title {
-    font-size: clamp(0.42rem, 1vw, 0.62rem);
+    font-size: clamp(0.36rem, 0.95vw, 0.6rem);
     font-weight: 700;
-    margin-bottom: 0.35em;
+    margin-bottom: 0.3em;
     color: var(--text);
   }
   .s8-item {
-    font-size: clamp(0.36rem, 0.84vw, 0.54rem);
+    font-size: clamp(0.28rem, 0.8vw, 0.52rem);
     color: #555;
-    padding: 0.18em 0;
+    padding: 0.16em 0;
     border-bottom: 1px solid #f0f0f0;
     line-height: 1.4;
   }
   .s8-actions {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0.5em;
+    gap: clamp(0.3em, 0.9vw, 0.5em);
+    flex: 1;
+    overflow: hidden;
   }
   .s8-action-card {
     background: #fff;
     border-radius: 6px;
-    padding: 0.5em 0.65em;
+    padding: clamp(0.35em, 1vw, 0.5em) clamp(0.4em, 1.2vw, 0.65em);
     box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    min-width: 0;
+    overflow: hidden;
   }
   .s8-action-title {
-    font-size: clamp(0.4rem, 0.95vw, 0.6rem);
+    font-size: clamp(0.34rem, 0.92vw, 0.58rem);
     font-weight: 700;
-    margin-bottom: 0.3em;
+    margin-bottom: 0.25em;
   }
   .s8-action-title.good { color: var(--teal); }
   .s8-action-title.bad { color: var(--red-accent); }
   .s8-action-item {
-    font-size: clamp(0.34rem, 0.8vw, 0.51rem);
+    font-size: clamp(0.26rem, 0.76vw, 0.49rem);
     color: #555;
-    padding: 0.14em 0;
+    padding: 0.12em 0;
     border-bottom: 1px solid #f5f5f5;
     line-height: 1.4;
   }
@@ -603,80 +630,100 @@
   .s9-three-col {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 0.5em;
+    gap: clamp(0.3em, 0.9vw, 0.5em);
+    flex: 1;
+    overflow: hidden;
   }
   .s9-col-title {
-    font-size: clamp(0.42rem, 1vw, 0.62rem);
+    font-size: clamp(0.36rem, 0.95vw, 0.6rem);
     font-weight: 700;
-    margin-bottom: 0.3em;
+    margin-bottom: 0.25em;
     color: var(--text);
+    flex-shrink: 0;
   }
-  .s9-layers { display: flex; flex-direction: column; gap: 0.3em; }
+  .s9-col-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-width: 0;
+    overflow: hidden;
+  }
+  .s9-layers { display: flex; flex-direction: column; gap: clamp(0.2em, 0.7vw, 0.3em); flex: 1; overflow: hidden; }
   .s9-layer {
     background: #fff;
     border-radius: 5px;
-    padding: 0.35em 0.5em;
+    padding: clamp(0.3em, 0.9vw, 0.35em) clamp(0.35em, 1vw, 0.5em);
     border-left: 3px solid;
     box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    min-width: 0;
+    overflow: hidden;
   }
   .s9-layer:nth-child(1) { border-color: #8b5cf6; }
   .s9-layer:nth-child(2) { border-color: var(--teal); }
   .s9-layer:nth-child(3) { border-color: var(--gold); }
   .s9-layer-title {
-    font-size: clamp(0.36rem, 0.84vw, 0.52rem);
+    font-size: clamp(0.3rem, 0.8vw, 0.5rem);
     font-weight: 700;
     color: var(--text);
   }
   .s9-layer-text {
-    font-size: clamp(0.32rem, 0.75vw, 0.47rem);
+    font-size: clamp(0.26rem, 0.7vw, 0.44rem);
     color: #777;
     margin-top: 0.1em;
     line-height: 1.4;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
-  .s9-algo-steps { display: flex; flex-direction: column; gap: 0.28em; }
+  .s9-algo-steps { display: flex; flex-direction: column; gap: clamp(0.18em, 0.6vw, 0.28em); flex: 1; overflow: hidden; }
   .s9-step-row {
     display: flex;
     align-items: flex-start;
-    gap: 0.35em;
+    gap: 0.3em;
+    min-width: 0;
   }
   .s9-step-num {
-    width: 16px; height: 16px;
+    width: clamp(12px, 1.8vw, 16px);
+    height: clamp(12px, 1.8vw, 16px);
     border-radius: 50%;
     background: var(--teal);
     color: #fff;
-    font-size: clamp(0.3rem, 0.7vw, 0.44rem);
+    font-size: clamp(0.25rem, 0.68vw, 0.42rem);
     font-weight: 700;
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
     margin-top: 0.1em;
   }
   .s9-step-text {
-    font-size: clamp(0.34rem, 0.8vw, 0.51rem);
+    font-size: clamp(0.28rem, 0.78vw, 0.49rem);
     color: #555;
     line-height: 1.45;
   }
   .s9-step-code {
-    font-size: clamp(0.28rem, 0.65vw, 0.42rem);
+    font-size: clamp(0.22rem, 0.62vw, 0.4rem);
     color: #888;
     font-family: 'DM Mono', monospace;
-    margin-top: 0.1em;
+    margin-top: 0.08em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
-  .s9-before-after { display: flex; flex-direction: column; gap: 0.35em; }
+  .s9-before-after { display: flex; flex-direction: column; gap: clamp(0.2em, 0.7vw, 0.35em); flex: 1; overflow: hidden; }
   .s9-ba-label {
-    font-size: clamp(0.36rem, 0.84vw, 0.52rem);
+    font-size: clamp(0.28rem, 0.8vw, 0.5rem);
     font-weight: 700;
     color: var(--text);
-    margin-bottom: 0.15em;
+    margin-bottom: 0.12em;
   }
   .s9-ba-box {
     background: var(--navy);
     border-radius: 5px;
-    padding: 0.4em 0.55em;
+    padding: clamp(0.3em, 0.9vw, 0.4em) clamp(0.35em, 1vw, 0.55em);
     direction: rtl;
+    overflow: hidden;
   }
   .s9-ba-box.after { background: rgba(0,180,160,0.12); }
   .s9-ba-text {
-    font-size: clamp(0.3rem, 0.7vw, 0.46rem);
+    font-size: clamp(0.24rem, 0.68vw, 0.44rem);
     color: rgba(255,255,255,0.75);
     font-family: 'DM Mono', monospace;
     line-height: 1.6;
@@ -684,43 +731,48 @@
   }
   .s9-ba-box.after .s9-ba-text { color: var(--teal-dim); }
   .s9-note {
-    font-size: clamp(0.3rem, 0.7vw, 0.46rem);
+    font-size: clamp(0.24rem, 0.68vw, 0.44rem);
     color: #888;
     line-height: 1.5;
     font-style: italic;
-    margin-top: 0.2em;
+    overflow: hidden;
   }
 
   /* ── NAVIGATION ── */
   .pres-nav {
     background: var(--navy-mid);
-    padding: 0.7rem 1.2rem;
+    padding: 0.6rem 1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     border-top: 1px solid rgba(255,255,255,0.08);
+    gap: 0.5rem;
   }
   .pres-nav button {
     background: rgba(255,255,255,0.07);
     border: 1px solid rgba(255,255,255,0.12);
     color: rgba(255,255,255,0.75);
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.8rem;
-    padding: 0.4em 1.1em;
+    font-size: clamp(0.68rem, 2vw, 0.8rem);
+    padding: 0.38em 0.9em;
     border-radius: 6px;
     cursor: pointer;
     transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
   .pres-nav button:hover { background: rgba(255,255,255,0.13); color: #fff; }
   .pres-nav button:disabled { opacity: 0.3; cursor: not-allowed; }
 
   .pres-dots-row {
     display: flex;
-    gap: 6px;
+    gap: 5px;
     align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
   }
   .nav-dot {
-    width: 8px; height: 8px; border-radius: 50%;
+    width: 7px; height: 7px; border-radius: 50%;
     background: rgba(255,255,255,0.2);
     cursor: pointer;
     transition: background 0.2s, transform 0.2s;
@@ -733,7 +785,105 @@
   }
   .nav-dot:hover { background: rgba(255,255,255,0.4); }
 
-  /* ── ABOUT ── */
+  /* ── MOBILE SCROLL PANEL ── */
+  /* On very small screens where the 16:9 viewport would be too cramped,
+     switch to a scrollable panel instead */
+  @media (max-width: 480px) {
+    .slide-viewport {
+      aspect-ratio: unset;
+      height: auto;
+      min-height: 380px;
+    }
+    .slide {
+      position: relative;
+      transform: none !important;
+      inset: unset;
+      display: none;
+      flex-direction: column;
+    }
+    .slide.active {
+      display: flex;
+      opacity: 1;
+    }
+    .slide.exit {
+      display: none;
+    }
+
+    /* Slide 1 special */
+    .slide-1 {
+      min-height: 320px;
+      padding: 8% 7%;
+    }
+
+    /* Slide body scrollable on mobile */
+    .slide-body {
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      max-height: 340px;
+      gap: 0.7rem;
+      padding: 0.75rem;
+    }
+
+    /* 4-col → 2-col on mobile */
+    .s2-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .s6-metrics {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    /* 2-col stays 2-col but we increase font floor */
+    .s2-item, .s3-item, .s4-table td, .s4-table th,
+    .s5-item, .s6-table td, .s6-table th,
+    .s7-check-text, .s8-item, .s8-action-item { font-size: 0.62rem; }
+
+    .s2-label, .s3-card-title, .s4-table-label, .s5-card-title,
+    .s6-table-label, .s6-metric-name, .s7-next-label, .s8-col-title,
+    .s8-action-title, .s9-col-title { font-size: 0.68rem; }
+
+    .s2-num { font-size: 1.3rem; }
+
+    /* Slide 3 flow wraps */
+    .s3-flow {
+      flex-wrap: wrap;
+      gap: 0.3rem;
+    }
+    .s3-step { flex: 0 0 calc(33% - 0.4rem); }
+    .s3-arr { display: none; }
+
+    /* Slide 8 three-col → stack */
+    .s8-three-col {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+
+    /* Slide 9 three-col → single col */
+    .s9-three-col {
+      grid-template-columns: 1fr;
+      gap: 0.6rem;
+      overflow-y: auto;
+      flex: unset;
+    }
+    .s9-col-inner { height: auto; }
+    .s9-layers, .s9-algo-steps, .s9-before-after { flex: unset; overflow: visible; }
+    .s9-step-code { white-space: normal; }
+
+    /* prompt direction fix */
+    .s4-prompt { direction: rtl; }
+
+    /* Nav buttons smaller */
+    .pres-nav button { font-size: 0.72rem; padding: 0.35em 0.7em; }
+  }
+
+  /* Tablet adjustments */
+  @media (min-width: 481px) and (max-width: 700px) {
+    .s2-grid { grid-template-columns: 1fr 1fr; }
+    .s6-metrics { grid-template-columns: 1fr 1fr; }
+    .s8-three-col { grid-template-columns: 1fr 1fr; }
+    .s9-three-col { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* ── FOOTER ── */
   footer {
     text-align: center;
     padding: 2rem 0;
@@ -1072,7 +1222,7 @@
           <div class="slide-header">Footnote Extraction — الطبيب الشعبي Document Format</div>
           <div class="slide-body">
             <div class="s9-three-col">
-              <div>
+              <div class="s9-col-inner">
                 <div class="s9-col-title">Document structure</div>
                 <div class="s9-layers">
                   <div class="s9-layer">
@@ -1081,7 +1231,7 @@
                   </div>
                   <div class="s9-layer">
                     <div class="s9-layer-title">Layer 2 — Body text with superscript refs</div>
-                    <div class="s9-layer-text">الفَقَّارَه يَمْسَحُونَها ²³⁶ وَعَصَبِيَة — numbers 236/237/238 are meaningless to FAISS without resolution</div>
+                    <div class="s9-layer-text">الفَقَّارَه يَمْسَحُونَها ²³⁶ وَعَصَبِيَة — numbers are meaningless to FAISS without resolution</div>
                   </div>
                   <div class="s9-layer">
                     <div class="s9-layer-title">Layer 3 — Footnote definitions</div>
@@ -1089,7 +1239,7 @@
                   </div>
                 </div>
               </div>
-              <div>
+              <div class="s9-col-inner">
                 <div class="s9-col-title">Extraction algorithm</div>
                 <div class="s9-algo-steps">
                   <div class="s9-step-row"><div class="s9-step-num">1</div><div><div class="s9-step-text">OCR &amp; Text Extract</div><div class="s9-step-code">pdfplumber → pytesseract</div></div></div>
@@ -1099,7 +1249,7 @@
                   <div class="s9-step-row"><div class="s9-step-num">5</div><div><div class="s9-step-text">Build Enriched Chunk</div><div class="s9-step-code">heading + enriched_body + footnotes</div></div></div>
                 </div>
               </div>
-              <div>
+              <div class="s9-col-inner">
                 <div class="s9-col-title">Before → After</div>
                 <div class="s9-before-after">
                   <div>
@@ -1114,7 +1264,7 @@
                       <div class="s9-ba-text">الفَقَّارَه يَمْسَحُونَها<br>[تدليكها بالمساج] وَعَصَبِيَة<br>الخَاصِرَة [أو] يَجطُوا<br>لَها [أداة خشبية]</div>
                     </div>
                   </div>
-                  <div class="s9-note">Now FAISS matches Arabic queries AND English queries like 'massage remedy' — both land on the correct chunk.</div>
+                  <div class="s9-note">FAISS now matches Arabic AND English queries like 'massage remedy' — both land on the correct chunk.</div>
                 </div>
               </div>
             </div>
@@ -1153,6 +1303,12 @@
   const counter = document.getElementById('slideCounter');
   const total = slides.length;
   let current = 0;
+  let isMobile = window.matchMedia('(max-width: 480px)').matches;
+
+  // Rebuild on resize
+  window.addEventListener('resize', () => {
+    isMobile = window.matchMedia('(max-width: 480px)').matches;
+  });
 
   // build dots
   slides.forEach((_, i) => {
@@ -1164,17 +1320,25 @@
 
   function goTo(idx) {
     const dots = dotsRow.querySelectorAll('.nav-dot');
-    slides[current].classList.remove('active');
-    slides[current].classList.add('exit');
-    setTimeout(() => slides[current < idx ? current : idx].classList.remove('exit'), 350);
-    if (current !== idx) {
-      slides[current].addEventListener('transitionend', function h() {
-        slides[current].classList.remove('exit');
-        slides[current].removeEventListener('transitionend', h);
-      });
+    const prev = current;
+
+    if (isMobile) {
+      // Mobile: simple show/hide
+      slides[prev].classList.remove('active');
+      current = idx;
+      slides[current].classList.add('active');
+    } else {
+      // Desktop: slide transition
+      slides[prev].classList.remove('active');
+      slides[prev].classList.add('exit');
+      slides[prev].addEventListener('transitionend', function h() {
+        slides[prev].classList.remove('exit');
+        slides[prev].removeEventListener('transitionend', h);
+      }, { once: true });
+      current = idx;
+      slides[current].classList.add('active');
     }
-    current = idx;
-    slides[current].classList.add('active');
+
     dots.forEach((d, i) => d.classList.toggle('active', i === current));
     counter.textContent = `${current + 1} / ${total}`;
     document.getElementById('prevBtn').disabled = current === 0;
@@ -1183,7 +1347,16 @@
 
   function navigate(dir) { goTo(Math.max(0, Math.min(total - 1, current + dir))); }
 
-  // keyboard nav
+  // Touch/swipe support
+  let touchStartX = 0;
+  const viewport = document.getElementById('slideViewport');
+  viewport.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
+  viewport.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 40) navigate(dx < 0 ? 1 : -1);
+  }, { passive: true });
+
+  // Keyboard nav
   document.addEventListener('keydown', e => {
     if (e.key === 'ArrowRight' || e.key === 'ArrowDown') navigate(1);
     if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') navigate(-1);
